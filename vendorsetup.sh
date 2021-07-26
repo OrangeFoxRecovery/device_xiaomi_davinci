@@ -52,57 +52,54 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_XZ_UTILS=1
 	export FOX_REPLACE_BUSYBOX_PS=1
 	export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
-    export OF_USE_SYSTEM_FINGERPRINT=1
+    	export OF_USE_SYSTEM_FINGERPRINT=1
    	export FOX_BUGGED_AOSP_ARB_WORKAROUND="1510672800"; # Tue Nov 14 15:20:00 GMT 2017
 	export FOX_USE_SPECIFIC_MAGISK_ZIP=~/Magisk/Magisk-v21.4.zip
 
 	# OTA for custom ROMs
-    export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
-    export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
-    export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
+    	export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
+    	export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
+    	export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
     
-    # -- add settings for R11 --
-    export FOX_R11=1
-    export OF_USE_TWRP_SAR_DETECT=1
-    export OF_MAINTAINER="Sushrut1101"
-    export OF_MAINTAINER_AVATAR="misc/Sushrut1101.png"
-    export FOX_VERSION="R11.1_0"
-    export FOX_BUILD_TYPE="Beta-Unofficial"
+    	# -- add settings for R11 --
+    	export FOX_R11=1
+    	export OF_USE_TWRP_SAR_DETECT=1
+    	export OF_MAINTAINER="Sushrut1101"
+    	export OF_MAINTAINER_AVATAR="misc/Sushrut1101.png"
+    	export FOX_VERSION="R11.1_0"
+    	export FOX_BUILD_TYPE="Beta-Unofficial"
 
-    export OF_QUICK_BACKUP_LIST="/boot;/data;/system_image;/vendor_image;"
-    export FOX_ADVANCED_SECURITY=1
-    # -- end R11 settings --
+    	export OF_QUICK_BACKUP_LIST="/boot;/data;/system_image;/vendor_image;"
+    	export FOX_ADVANCED_SECURITY=1
+    	# -- end R11 settings --
 
 	# Run a Process after Formatting Data to Work-Around MTP Issues
 	export OF_RUN_POST_FORMAT_PROCESS=1
 
-    if [ -n "$OF_MAINTAINER_AVATAR" ]; then
-        if [ ! -f "$OF_MAINTAINER_AVATAR" ]; then
-              # some colour codes
-              RED='\033[0;31m'
-              GREEN='\033[0;32m'
-              ORANGE='\033[0;33m'
-              BLUE='\033[0;34m'
-              PURPLE='\033[0;35m'
-              echo -e "${RED}-- File \"$OF_MAINTAINER_AVATAR\" not found  ...${NC}"
-              echo -e "${ORANGE}-- Downloading...${NC}"
-              mkdir -p misc
-              curl https://raw.githubusercontent.com/OrangeFoxRecovery/avatar/fox/Sushrut1101.png >> $OF_MAINTAINER_AVATAR
-              echo -e "${BLUE}-- Successfully Downloaded the Avatar Image \"$OF_MAINTAINER_AVATAR\" ...${NC}"
-              echo -e "${PURPLE}-- Using A Custom Maintainer Avatar from the Downloaded Image \"$OF_MAINTAINER_AVATAR\" ...${NC}"
-              echo -e "${GREEN}-- Done!"
-        fi
-    fi
+    	if [ -n "$OF_MAINTAINER_AVATAR" ]; then
+        	if [ ! -f "$OF_MAINTAINER_AVATAR" ]; then
+              		# some colour codes
+              		RED='\033[0;31m'
+              		GREEN='\033[0;32m'
+              		ORANGE='\033[0;33m'
+              		BLUE='\033[0;34m'
+              		PURPLE='\033[0;35m'
+              		echo -e "${RED}-- File \"$OF_MAINTAINER_AVATAR\" not found  ...${NC}"
+              		echo -e "${ORANGE}-- Downloading...${NC}"
+              		mkdir -p misc
+              		curl https://raw.githubusercontent.com/OrangeFoxRecovery/avatar/fox/Sushrut1101.png >> $OF_MAINTAINER_AVATAR
+              		echo -e "${BLUE}-- Successfully Downloaded the Avatar Image \"$OF_MAINTAINER_AVATAR\" ...${NC}"
+              		echo -e "${PURPLE}-- Using A Custom Maintainer Avatar from the Downloaded Image \"$OF_MAINTAINER_AVATAR\" ...${NC}"
+              		echo -e "${GREEN}-- Done!"
+        	fi
+    	fi
 
-	# let's see what are our build VARs
+	# Let's See What are our Build VARs!
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
   	   export | grep "FOX" >> $FOX_BUILD_LOG_FILE
   	   export | grep "OF_" >> $FOX_BUILD_LOG_FILE
    	   export | grep "TARGET_" >> $FOX_BUILD_LOG_FILE
   	   export | grep "TW_" >> $FOX_BUILD_LOG_FILE
  	fi
-
-	add_lunch_combo omni_"$FDEVICE"-eng
-	add_lunch_combo omni_"$FDEVICE"-userdebug
 fi
 #
