@@ -19,7 +19,12 @@
 #
 FDEVICE="davinci"
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
-    export PLATFORM_VERSION="16.1.0"
+	# Basic Vars
+	export ALLOW_MISSING_DEPENDENCIES=true
+	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+	export LC_ALL="C"
+    	
+	export PLATFORM_VERSION="16.1.0"
    	export PLATFORM_SECURITY_PATCH="2099-12-31"
    	export TW_DEFAULT_LANGUAGE="en"
 	export OF_STATUS_INDENT_LEFT="48"
