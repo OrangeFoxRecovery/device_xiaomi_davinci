@@ -19,6 +19,7 @@
 #
 FDEVICE="davinci"
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
+
 	# Basic Vars
 	export ALLOW_MISSING_DEPENDENCIES=true
 	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
@@ -27,9 +28,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export PLATFORM_VERSION="16.1.0"
    	export PLATFORM_SECURITY_PATCH="2099-12-31"
    	export TW_DEFAULT_LANGUAGE="en"
-	export OF_STATUS_INDENT_LEFT="48"
-	export OF_STATUS_INDENT_RIGHT="48"
-	export OF_SCREEN_H=2340
 	export TARGET_DEVICE_ALT="davinciin"
 	export OF_TARGET_DEVICES="davinciin,davinci"
 	export OF_PATCH_AVB20=1
@@ -40,6 +38,12 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
 	export OF_FORCE_MAGISKBOOT_BOOT_PATCH_MIUI=1
 	export FOX_DELETE_AROMAFM=1
+	
+	# Screen Settings
+	export OF_SCREEN_H=2340
+	export OF_STATUS_INDENT_LEFT="48"
+	export OF_STATUS_INDENT_RIGHT="48"
+	export OF_ALLOW_DISABLE_NAVBAR=0
 
 	export OF_FBE_METADATA_MOUNT_IGNORE=1
 	export FOX_USE_BASH_SHELL=1
